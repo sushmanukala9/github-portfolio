@@ -1,3 +1,62 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #3f51b5;
+  color: white;
+}
+
+.bio-section, .projects-section, .experience-section, .skills-section {
+  padding: 20px;
+  margin: 20px 0;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.projects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.project-item {
+  flex: 1 1 calc(50% - 20px);
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #3f51b5;
+  color: white;
+}
+
+.social-links a {
+  margin-right: 15px;
+}
+
+@media (max-width: 768px) {
+  .project-item {
+    flex: 1 1 100%;
+  }
+}
+
+
 .App {
   text-align: center;
 }
