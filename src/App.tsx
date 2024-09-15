@@ -60,6 +60,61 @@ const App: React.FC = () => {
         </div>
       </section>
 
+{/* Experience Section */}
+<section id="experience-section" className="container py-5">
+  <h2>Professional Experience</h2>
+  <div className="row">
+
+    {/* Kaiser Permanente Experience */}
+    <div className="col-md-6 mb-4">
+      <h3>Kaiser Permanente | Full Stack Web Development Intern</h3>
+      <p>June 2024 – Present | Rockville, Maryland</p>
+      <ul>
+        <li>Developing full-stack applications for physicians and trainers using React and .NET APIs.</li>
+        <li>Designing DB schema and optimizing data flow with stored procedures.</li>
+        <li>Collaborating with teams to deliver a seamless experience for users, focusing on security, scalability, and performance improvements.</li>
+      </ul>
+    </div>
+
+    {/* Ivy Software Development Services Experience */}
+    <div className="col-md-6 mb-4">
+      <h3>Ivy Software Development Services | Software Engineer</h3>
+      <p>March 2022 – June 2023 | Hyderabad, Telangana</p>
+      <ul>
+        <li>Worked on BETMGM online gambling websites, focusing on login, registration, and compliance components.</li>
+        <li>Developed backend services for responsible gambling features such as automatic service/account closure using Java.</li>
+        <li>Wrote SQL scripts and Java code to ensure data accuracy and proper server-side business logic execution.</li>
+        <li>Debugged and resolved complex issues within the Spring framework and SQL queries to improve application performance and user experience.</li>
+      </ul>
+    </div>
+
+    {/* Oracle Cerner Experience */}
+    <div className="col-md-6 mb-4">
+      <h3>Oracle Cerner | Software Engineer</h3>
+      <p>January 2020 – September 2021 | Bangalore, Karnataka</p>
+      <ul>
+        <li>Enhanced the 'PowerChart' healthcare application by implementing an order priority feature using C++ MFC architecture.</li>
+        <li>Optimized phlebotomist workflows by implementing complex backend logic, improving the management of patient lab orders and test priorities.</li>
+        <li>Collaborated with cross-functional teams, including healthcare professionals and developers, to deliver efficient and reliable software solutions that meet user needs.</li>
+        <li>Followed Software Development Lifecycle (SDLC) practices: code design, analysis, implementation, unit testing, code reviews, and deployment.</li>
+      </ul>
+    </div>
+
+    {/* Cloudio Inc Experience */}
+    <div className="col-md-6 mb-4">
+      <h3>Cloudio Inc | Software Intern</h3>
+      <p>April 2019 – June 2019 | Hyderabad, Telangana</p>
+      <ul>
+        <li>Collaborated with Cloudio startup to create a web-based application for sales data analysis using Python, Django, and MySQL.</li>
+        <li>Implemented linear regression models for sales predictions, providing a user-friendly interface for users to upload and analyze datasets.</li>
+        <li>Developed interactive dashboards to visualize sales trends, allowing stakeholders to make data-driven business decisions.</li>
+        <li>Utilized Python libraries like Pandas, NumPy, and Matplotlib to handle data analysis and generate graphical reports.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
       {/* Projects Section */}
       <section id="projects-section" className="container py-5">
         <h2>Projects</h2>
@@ -358,29 +413,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience-section" className="container py-5">
-        <h2>Professional Experience</h2>
-        <div className="row">
-          <div className="col-md-6 mb-4">
-            <h3>Kaiser Permanente | Full Stack Web Development Intern</h3>
-            <p>June 2024 – Present | Rockville, Maryland</p>
-            <ul>
-              <li>Developing full-stack applications for physicians and trainers using React and .NET APIs.</li>
-              <li>Designing DB schema and optimizing data flow with stored procedures.</li>
-            </ul>
-          </div>
-          <div className="col-md-6 mb-4">
-            <h3>Ivy Software Development Services | Software Engineer</h3>
-            <p>March 2022 – June 2023 | Hyderabad, Telangana</p>
-            <ul>
-              <li>Worked on BETMGM online gambling websites, focusing on login, registration, and compliance components.</li>
-              <li>Developed backend services for responsible gambling features like auto service/account closure in Java.</li>
-            </ul>
-          </div>
-          {/* Other experiences */}
-        </div>
-      </section>
+      
 
       {/* Skills Section */}
       <section id="skills-section" className="container py-5">
