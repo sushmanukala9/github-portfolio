@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import './App.css';
-import BookstoreProject from './components/BookstoreProject';
-import EventEaseProject from './components/EventEaseProject';
-import SocialMediaAnalysisProject from './components/SocialMediaAnalysisProject';
-import CompletelyFairSchedulerProject from './components/CompletelyFairSchedulerProject';
-import FeatureSelectionGeneDataProject from './components/FeatureSelectionGeneDataProject';
-import SmartClassroomProject from './components/SmartClassroomProject';
 
+import BookstoreProject from './BookstoreProject';
+import EventEaseProject from './EventEaseProject';
+import SocialMediaAnalysisProject from './SocialMediaAnalysisProject';
+import CompletelyFairSchedulerProject from './CompletelyFairSchedulerProject';
+import FeatureSelectionGeneDataProject from './FeatureSelectionGeneDataProject';
+import SmartClassroomProject from './SmartClassroomProject';
+import './App.css';
 const App: React.FC = () => {
   const handleScrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
