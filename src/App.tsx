@@ -63,18 +63,30 @@ const App: React.FC = () => {
       {/* Projects Section */}
       <section id="projects-section" className="container py-5">
         <h2>Projects</h2>
-
+    <br />
         {/* Online Bookstore Website */}
         <div className="mb-5">
-          <h3>Online Bookstore Website</h3>
-          <p>Full-stack React J2EE Bookstore Website with MySQL DB.</p>
-          <a href="https://github.com/sushmanukala9/SushmaBookstoreFinal" target="_blank" rel="noopener noreferrer" className="btn btn-primary">GitHub Repo</a>
-          <a href="https://www.youtube.com/watch?v=ZdEzDdZkWtk" target="_blank" rel="noopener noreferrer" className="btn btn-secondary ml-2">Demo Video</a>
-
+         
+      
           <div className="container bookstore-container">
   
 
       <h1 className="mt-5">Online Bookstore Project</h1>
+
+ {/* YouTube Video */}
+ <section className="mt-5">
+        <h2>Project Demo Video</h2>
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/ZdEzDdZkWtk" 
+          title="Bookstore Project Demo" 
+          frameBorder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowFullScreen>
+        </iframe>
+      </section>
+
 
       {/* Objective and Tech Stack */}
       <section className="mt-5">
@@ -98,13 +110,6 @@ const App: React.FC = () => {
           <li>DAO pattern for backend logic</li>
           <li>Database transactions for secure and efficient order handling</li>
         </ul>
-      </section>
-
-      {/* Screenshots */}
-      <section className="mt-5">
-        <h2>Screenshots</h2>
-        <img src="/path-to-your-screenshot1" alt="Homepage" className="img-fluid" />
-        <img src="/path-to-your-screenshot2" alt="Cart Component" className="img-fluid mt-3" />
       </section>
 
       {/* Code Snippets */}
@@ -166,42 +171,93 @@ const App: React.FC = () => {
         </pre>
       </section>
 
-      {/* YouTube Video */}
+     
+    </div>
+        </div>
+
+         {/* EventEase Project */}
+        <div className="mb-5">
+          <h3>Event Management Website – EventEase</h3>
+          <p>
+            EventEase is a web-based event tracking application designed to simplify the process of organizing events, managing guest lists, and handling RSVPs.
+            It allows hosts to create customized invitations, send them via email, and track guest responses easily.
+          </p>
+          <a href="https://github.com/sushmanukala9/SEProject" target="_blank" rel="noopener noreferrer" className="btn btn-primary">GitHub Repo</a>
+         
+          {/* YouTube Video */}
       <section className="mt-5">
         <h2>Project Demo Video</h2>
         <iframe 
           width="560" 
           height="315" 
-          src="https://www.youtube.com/embed/ZdEzDdZkWtk" 
-          title="Bookstore Project Demo" 
+          src="https://www.youtube.com/embed/6KnC0JF73d8" 
+          title="EventEase Project Demo" 
           frameBorder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowFullScreen>
         </iframe>
       </section>
-    </div>
-        </div>
 
-        {/* EventEase - Event Management Website */}
-        <div className="mb-5">
-          <h3>Event Management Website – EventEase</h3>
-          <p>Built using React, SpringBoot, AWS. Hosted the backend on AWS EC2, and stored the database in AWS RDS. Provided email service using JavaMail API.</p>
-          <a href="https://github.com/sushmanukala9/SEProject" target="_blank" rel="noopener noreferrer" className="btn btn-primary">GitHub Repo</a>
-          <a href="https://www.youtube.com/watch?v=6KnC0JF73d8" target="_blank" rel="noopener noreferrer" className="btn btn-secondary ml-2">Demo Video</a>
+          {/* Features and Functionality */}
+          <h4 className="mt-4">Features and Functionality</h4>
+          <p>
+            The EventEase application simplifies event management by offering structured forms for event creation and guest response tracking. It allows hosts to:
+            <ul>
+              <li>Create customized invitations with personalized messages, photos, and event-specific questions.</li>
+              <li>Invite guests via email with unique links to respond to the event.</li>
+              <li>Track guest responses, RSVP status, and submitted photos/messages.</li>
+              <li>Display guest responses in a user-friendly format.</li>
+            </ul>
+            This solution enhances host-invitee communication and ensures a seamless event management experience.
+          </p>
 
-          {/* Code Snippets */}
-          <h4 className="mt-4">Code Snippets</h4>
+          {/* Technical Stack */}
+          <h4 className="mt-4">Technical Stack</h4>
+          <p>
+            The EventEase web application was built using the following technologies:
+            <ul>
+              <li><strong>Front-End:</strong> React.js, HTML, CSS, JavaScript</li>
+              <li><strong>Back-End:</strong> Java, Spring Boot, JDBC, MySQL, Tomcat</li>
+              <li><strong>Email:</strong> JavaMailSender for sending invitation emails</li>
+              <li><strong>Database:</strong> MySQL for event and response data storage</li>
+            </ul>
+            The application follows the MVC (Model-View-Controller) architecture, ensuring separation of concerns and maintainability.
+          </p>
+
+          {/* Java MailSender */}
+          <h4 className="mt-4">Email Functionality (Java MailSender)</h4>
+          <p>
+            EventEase uses the <strong>JavaMailSender</strong> interface, part of the Spring Framework's email support. This allows the application to send 
+            personalized invitations via email. Here’s an example of how emails are sent:
+          </p>
           <pre>
             <code>
               {`
-                @PostMapping("/events")
-                public ResponseEntity<Event> createEvent(@RequestBody Event event) {
-                  Event newEvent = eventService.saveEvent(event);
-                  return new ResponseEntity<>(newEvent, HttpStatus.CREATED);
-                }
+              @Autowired
+              private JavaMailSender mailSender;
+
+              public void sendEmail(String to, String subject, String body) {
+                SimpleMailMessage message = new SimpleMailMessage();
+                message.setTo(to);
+                message.setSubject(subject);
+                message.setText(body);
+                mailSender.send(message);
+              }
               `}
             </code>
           </pre>
+
+          {/* Deployment Details */}
+          <h4 className="mt-4">Deployment Details</h4>
+          <p>
+            The application is hosted on Amazon Web Services (AWS), leveraging the following services:
+            <ul>
+              <li><strong>Amazon RDS (Relational Database Service):</strong> Hosts the MySQL database used for event and response data storage.</li>
+              <li><strong>Amazon EC2 (Elastic Compute Cloud):</strong> Hosts the backend API, providing scalable server resources.</li>
+              <li><strong>Amazon S3 (Simple Storage Service):</strong> Hosts the front-end static assets and serves them to users.</li>
+            </ul>
+            The AWS cloud infrastructure ensures scalability, high availability, and secure access to the application.
+          </p>
         </div>
 
         {/* Social Media Analysis and Product Recommendation */}
