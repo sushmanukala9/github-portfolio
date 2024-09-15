@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 
 const CompletelyFairSchedulerProject: React.FC = () => {
   return (
     <div className="container project-container">
-      <Link to="/" className="btn btn-primary mt-3">Back to Portfolio</Link>
+      
 
       <h1 className="mt-5">Completely Fair Scheduler with Multi-Threading and Load Balancing</h1>
 
