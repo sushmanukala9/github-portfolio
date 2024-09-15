@@ -154,3 +154,23 @@ footer a:hover {
     flex-direction: column;
   }
 }
+
+
+.project-container {
+  padding: 20px;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+pre code {
+  font-size: 14px;
+}
+
+iframe {
+  margin-top: 20px;
+}
