@@ -1,37 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const App: React.FC = () => {
-  const handleScrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  // State to manage the visibility of each section
+  const [showProjects, setShowProjects] = useState(false);
+  const [showExperience, setShowExperience] = useState(true); // Keep experience visible by default
+  const [showSkills, setShowSkills] = useState(false);
 
   return (
     <div className="container-fluid p-0">
-      {/* Navigation Bar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a className="navbar-brand" href="#">Sushma's Portfolio</a>
-        <div className="collapse navbar-collapse justify-content-center">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link" onClick={() => handleScrollToSection('bio-section')}>About Me</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" onClick={() => handleScrollToSection('projects-section')}>Projects</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" onClick={() => handleScrollToSection('experience-section')}>Experience</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" onClick={() => handleScrollToSection('skills-section')}>Skills</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
       {/* Header Section */}
       <header className="jumbotron jumbotron-fluid text-center bg-primary text-white">
         <div className="container">
@@ -40,7 +17,7 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Bio Section */}
+      {/* Bio Section (Always Displayed) */}
       <section id="bio-section" className="container py-5">
         <h2>About Me</h2>
         <p className="lead">
@@ -60,370 +37,272 @@ const App: React.FC = () => {
         </div>
       </section>
 
-{/* Experience Section */}
-<section id="experience-section" className="container py-5">
-  <h2>Professional Experience</h2>
-  <div className="row">
+      {/* Experience Section */}
+      <div className="horizontal-bar" onClick={() => setShowExperience(!showExperience)}>
+        <h2>Experience {showExperience ? '-' : '+'}</h2>
+      </div>
+      {showExperience && (
+        <section id="experience-section" className="container py-5">
+          <div className="row">
+            {/* Kaiser Permanente Experience */}
+            <div className="col-md-6 mb-4">
+              <h3>Kaiser Permanente | Full Stack Web Development Intern</h3>
+              <p>June 2024 – Present | Rockville, Maryland</p>
+              <ul>
+                <li>Developing full-stack applications for physicians and trainers using React and .NET APIs.</li>
+                <li>Designing DB schema and optimizing data flow with stored procedures.</li>
+                <li>Collaborating with teams to deliver a seamless experience for users, focusing on security, scalability, and performance improvements.</li>
+              </ul>
+            </div>
 
-    {/* Kaiser Permanente Experience */}
-    <div className="col-md-6 mb-4">
-      <h3>Kaiser Permanente | Full Stack Web Development Intern</h3>
-      <p>June 2024 – Present | Rockville, Maryland</p>
-      <ul>
-        <li>Developing full-stack applications for physicians and trainers using React and .NET APIs.</li>
-        <li>Designing DB schema and optimizing data flow with stored procedures.</li>
-        <li>Collaborating with teams to deliver a seamless experience for users, focusing on security, scalability, and performance improvements.</li>
-      </ul>
-    </div>
+            {/* Ivy Software Development Services */}
+            <div className="col-md-6 mb-4">
+              <h3>Ivy Software Development Services | Software Engineer</h3>
+              <p>March 2022 – June 2023 | Hyderabad, Telangana</p>
+              <ul>
+                <li>Worked on BETMGM online gambling websites, focusing on login, registration, and compliance components.</li>
+                <li>Developed backend services for responsible gambling features such as automatic service/account closure using Java.</li>
+                <li>Debugged and resolved complex issues within the Spring framework and SQL queries to improve application performance and user experience.</li>
+              </ul>
+            </div>
 
-    {/* Ivy Software Development Services Experience */}
-    <div className="col-md-6 mb-4">
-      <h3>Ivy Software Development Services | Software Engineer</h3>
-      <p>March 2022 – June 2023 | Hyderabad, Telangana</p>
-      <ul>
-        <li>Worked on BETMGM online gambling websites, focusing on login, registration, and compliance components.</li>
-        <li>Developed backend services for responsible gambling features such as automatic service/account closure using Java.</li>
-        <li>Wrote SQL scripts and Java code to ensure data accuracy and proper server-side business logic execution.</li>
-        <li>Debugged and resolved complex issues within the Spring framework and SQL queries to improve application performance and user experience.</li>
-      </ul>
-    </div>
+            {/* Oracle Cerner Experience */}
+            <div className="col-md-6 mb-4">
+              <h3>Oracle Cerner | Software Engineer</h3>
+              <p>January 2020 – September 2021 | Bangalore, Karnataka</p>
+              <ul>
+                <li>Enhanced the 'PowerChart' healthcare application by implementing an order priority feature using C++ MFC architecture.</li>
+                <li>Optimized phlebotomist workflows by implementing complex backend logic, improving the management of patient lab orders and test priorities.</li>
+                <li>Collaborated with cross-functional teams, including healthcare professionals and developers, to deliver efficient and reliable software solutions that meet user needs.</li>
+                <li>Followed Software Development Lifecycle (SDLC) practices: code design, analysis, implementation, unit testing, code reviews, and deployment.</li>
+              </ul>
+            </div>
 
-    {/* Oracle Cerner Experience */}
-    <div className="col-md-6 mb-4">
-      <h3>Oracle Cerner | Software Engineer</h3>
-      <p>January 2020 – September 2021 | Bangalore, Karnataka</p>
-      <ul>
-        <li>Enhanced the 'PowerChart' healthcare application by implementing an order priority feature using C++ MFC architecture.</li>
-        <li>Optimized phlebotomist workflows by implementing complex backend logic, improving the management of patient lab orders and test priorities.</li>
-        <li>Collaborated with cross-functional teams, including healthcare professionals and developers, to deliver efficient and reliable software solutions that meet user needs.</li>
-        <li>Followed Software Development Lifecycle (SDLC) practices: code design, analysis, implementation, unit testing, code reviews, and deployment.</li>
-      </ul>
-    </div>
-
-    {/* Cloudio Inc Experience */}
-    <div className="col-md-6 mb-4">
-      <h3>Cloudio Inc | Software Intern</h3>
-      <p>April 2019 – June 2019 | Hyderabad, Telangana</p>
-      <ul>
-        <li>Collaborated with Cloudio startup to create a web-based application for sales data analysis using Python, Django, and MySQL.</li>
-        <li>Implemented linear regression models for sales predictions, providing a user-friendly interface for users to upload and analyze datasets.</li>
-        <li>Developed interactive dashboards to visualize sales trends, allowing stakeholders to make data-driven business decisions.</li>
-        <li>Utilized Python libraries like Pandas, NumPy, and Matplotlib to handle data analysis and generate graphical reports.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
+            {/* Cloudio Inc Experience */}
+            <div className="col-md-6 mb-4">
+              <h3>Cloudio Inc | Software Intern</h3>
+              <p>April 2019 – June 2019 | Hyderabad, Telangana</p>
+              <ul>
+                <li>Collaborated with Cloudio startup to create a web-based application for sales data analysis using Python, Django, and MySQL.</li>
+                <li>Implemented linear regression models for sales predictions, providing a user-friendly interface for users to upload and analyze datasets.</li>
+                <li>Developed interactive dashboards to visualize sales trends, allowing stakeholders to make data-driven business decisions.</li>
+                <li>Utilized Python libraries like Pandas, NumPy, and Matplotlib to handle data analysis and generate graphical reports.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Projects Section */}
-      <section id="projects-section" className="container py-5">
-        <h2>Projects</h2>
-    <br />
-        {/* Online Bookstore Website */}
-        <div className="mb-5">
-         
-      
-          <div className="container bookstore-container">
-  
+      <div className="horizontal-bar" onClick={() => setShowProjects(!showProjects)}>
+        <h2>Projects {showProjects ? '-' : '+'}</h2>
+      </div>
+      {showProjects && (
+        <section id="projects-section" className="container py-5">
+          {/* Online Bookstore Website */}
+          <div className="mb-5">
+            <div className="container bookstore-container">
+              <h1 className="mt-5">Online Bookstore Project</h1>
 
-      <h1 className="mt-5">Online Bookstore Project</h1>
+              {/* YouTube Video */}
+              <section className="mt-5">
+                <h2>Project Demo Video</h2>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/ZdEzDdZkWtk"
+                  title="Bookstore Project Demo"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen>
+                </iframe>
+              </section>
 
- {/* YouTube Video */}
- <section className="mt-5">
-        <h2>Project Demo Video</h2>
-        <iframe 
-          width="560" 
-          height="315" 
-          src="https://www.youtube.com/embed/ZdEzDdZkWtk" 
-          title="Bookstore Project Demo" 
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowFullScreen>
-        </iframe>
-      </section>
+              {/* Objective and Tech Stack */}
+              <section className="mt-5">
+                <h2>Objective and Tech Stack</h2>
+                <ul>
+                  <li>Online eCommerce bookstore website</li>
+                  <li>Implements full-stack web development</li>
+                  <li>Tech stack: React for frontend, J2EE for backend, MySQL for database</li>
+                </ul>
+              </section>
 
+              {/* Vision and Mission */}
+              <section className="mt-5">
+                <h2>Vision and Mission of the Project</h2>
+                <p>
+                  This project aims to create an online bookstore where users can browse and purchase books across various categories. The main fragments of the project include:
+                </p>
+                <ul>
+                  <li>React Hooks for managing state</li>
+                  <li>REST APIs for fetching and processing data</li>
+                  <li>DAO pattern for backend logic</li>
+                  <li>Database transactions for secure and efficient order handling</li>
+                </ul>
+              </section>
 
-      {/* Objective and Tech Stack */}
-      <section className="mt-5">
-        <h2>Objective and Tech Stack</h2>
-        <ul>
-          <li>Online eCommerce bookstore website</li>
-          <li>Implements full-stack web development</li>
-          <li>Tech stack: React for frontend, J2EE for backend, MySQL for database</li>
-        </ul>
-      </section>
+              {/* Code Snippets */}
+              <section className="mt-5">
+                <h2>Code Snippets</h2>
+                <h3>React API Call</h3>
+                <pre>
+                  <code>
+                    {`
+                      useEffect(() => {
+                        axios.get(\`http://localhost:8080/categories/\${categoryId}/books\`)
+                          .then(response => {
+                            setBooks(response.data);
+                          })
+                          .catch(error => {
+                            console.log(error);
+                          });
+                      }, [categoryId]);
+                    `}
+                  </code>
+                </pre>
 
-      {/* Vision and Mission */}
-      <section className="mt-5">
-        <h2>Vision and Mission of the Project</h2>
-        <p>
-          This project aims to create an online bookstore where users can browse and purchase books across various categories. The main fragments of the project include:
-        </p>
-        <ul>
-          <li>React Hooks for managing state</li>
-          <li>REST APIs for fetching and processing data</li>
-          <li>DAO pattern for backend logic</li>
-          <li>Database transactions for secure and efficient order handling</li>
-        </ul>
-      </section>
+                <h3>Cart Reducer Logic</h3>
+                <pre>
+                  <code>
+                    {`
+                      const cartReducer = (state, action) => {
+                        switch(action.type) {
+                          case "ADD":
+                            return [...state, action.item];
+                          case "REMOVE":
+                            return state.filter(item => item.id !== action.id);
+                          case "CLEAR":
+                            return [];
+                          default:
+                            return state;
+                        }
+                      };
+                    `}
+                  </code>
+                </pre>
 
-      {/* Code Snippets */}
-      <section className="mt-5">
-        <h2>Code Snippets</h2>
-        <h3>React API Call</h3>
-        <pre>
-          <code>
-            {`
-            useEffect(() => {
-              axios.get(\`http://localhost:8080/categories/\${categoryId}/books\`)
-                .then(response => {
-                  setBooks(response.data);
-                })
-                .catch(error => {
-                  console.log(error);
-                });
-            }, [categoryId]);
-            `}
-          </code>
-        </pre>
+                <h3>Order Processing API</h3>
+                <pre>
+                  <code>
+                    {`
+                      @POST
+                      @Path("/orders")
+                      @Consumes(MediaType.APPLICATION_JSON)
+                      public Response placeOrder(OrderForm orderForm) {
+                        long orderId = orderService.placeOrder(orderForm);
+                        if (orderId > 0) {
+                          return Response.ok(orderId).build();
+                        }
+                        return Response.status(Response.Status.BAD_REQUEST).build();
+                      }
+                    `}
+                  </code>
+                </pre>
+              </section>
+            </div>
+          </div>
 
-        <h3>Cart Reducer Logic</h3>
-        <pre>
-          <code>
-            {`
-            const cartReducer = (state, action) => {
-              switch(action.type) {
-                case "ADD":
-                  return [...state, action.item];
-                case "REMOVE":
-                  return state.filter(item => item.id !== action.id);
-                case "CLEAR":
-                  return [];
-                default:
-                  return state;
-              }
-            };
-            `}
-          </code>
-        </pre>
+          {/* EventEase Project */}
+          <div className="mb-5">
+            <h3>Event Management Website – EventEase</h3>
+            <p>
+              EventEase is a web-based event tracking application designed to simplify the process of organizing events, managing guest lists, and handling RSVPs.
+              It allows hosts to create customized invitations, send them via email, and track guest responses easily.
+            </p>
+            <a href="https://github.com/sushmanukala9/SEProject" target="_blank" rel="noopener noreferrer" className="btn btn-primary">GitHub Repo</a>
 
-        <h3>Order Processing API</h3>
-        <pre>
-          <code>
-            {`
-            @POST
-            @Path("/orders")
-            @Consumes(MediaType.APPLICATION_JSON)
-            public Response placeOrder(OrderForm orderForm) {
-              long orderId = orderService.placeOrder(orderForm);
-              if (orderId > 0) {
-                return Response.ok(orderId).build();
-              }
-              return Response.status(Response.Status.BAD_REQUEST).build();
-            }
-            `}
-          </code>
-        </pre>
-      </section>
+            {/* YouTube Video */}
+            <section className="mt-5">
+              <h2>Project Demo Video</h2>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/6KnC0JF73d8"
+                title="EventEase Project Demo"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen>
+              </iframe>
+            </section>
 
-     
-    </div>
-        </div>
+            {/* Features and Functionality */}
+            <h4 className="mt-4">Features and Functionality</h4>
+            <p>
+              The EventEase application simplifies event management by offering structured forms for event creation and guest response tracking. It allows hosts to:
+              <ul>
+                <li>Create customized invitations with personalized messages, photos, and event-specific questions.</li>
+                <li>Invite guests via email with unique links to respond to the event.</li>
+                <li>Track guest responses, RSVP status, and submitted photos/messages.</li>
+                <li>Display guest responses in a user-friendly format.</li>
+              </ul>
+              This solution enhances host-invitee communication and ensures a seamless event management experience.
+            </p>
 
-         {/* EventEase Project */}
-        <div className="mb-5">
-          <h3>Event Management Website – EventEase</h3>
-          <p>
-            EventEase is a web-based event tracking application designed to simplify the process of organizing events, managing guest lists, and handling RSVPs.
-            It allows hosts to create customized invitations, send them via email, and track guest responses easily.
-          </p>
-          <a href="https://github.com/sushmanukala9/SEProject" target="_blank" rel="noopener noreferrer" className="btn btn-primary">GitHub Repo</a>
-         
-          {/* YouTube Video */}
-      <section className="mt-5">
-        <h2>Project Demo Video</h2>
-        <iframe 
-          width="560" 
-          height="315" 
-          src="https://www.youtube.com/embed/6KnC0JF73d8" 
-          title="EventEase Project Demo" 
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowFullScreen>
-        </iframe>
-      </section>
+            {/* Technical Stack */}
+            <h4 className="mt-4">Technical Stack</h4>
+            <p>
+              The EventEase web application was built using the following technologies:
+              <ul>
+                <li><strong>Front-End:</strong> React.js, HTML, CSS, JavaScript</li>
+                <li><strong>Back-End:</strong> Java, Spring Boot, JDBC, MySQL, Tomcat</li>
+                <li><strong>Email:</strong> JavaMailSender for sending invitation emails</li>
+                <li><strong>Database:</strong> MySQL for event and response data storage</li>
+              </ul>
+              The application follows the MVC (Model-View-Controller) architecture, ensuring separation of concerns and maintainability.
+            </p>
 
-          {/* Features and Functionality */}
-          <h4 className="mt-4">Features and Functionality</h4>
-          <p>
-            The EventEase application simplifies event management by offering structured forms for event creation and guest response tracking. It allows hosts to:
-            <ul>
-              <li>Create customized invitations with personalized messages, photos, and event-specific questions.</li>
-              <li>Invite guests via email with unique links to respond to the event.</li>
-              <li>Track guest responses, RSVP status, and submitted photos/messages.</li>
-              <li>Display guest responses in a user-friendly format.</li>
-            </ul>
-            This solution enhances host-invitee communication and ensures a seamless event management experience.
-          </p>
+            {/* Java MailSender */}
+            <h4 className="mt-4">Email Functionality (Java MailSender)</h4>
+            <p>
+              EventEase uses the <strong>JavaMailSender</strong> interface, part of the Spring Framework's email support. This allows the application to send 
+              personalized invitations via email. Here’s an example of how emails are sent:
+            </p>
+            <pre>
+              <code>
+                {`
+                  @Autowired
+                  private JavaMailSender mailSender;
 
-          {/* Technical Stack */}
-          <h4 className="mt-4">Technical Stack</h4>
-          <p>
-            The EventEase web application was built using the following technologies:
-            <ul>
-              <li><strong>Front-End:</strong> React.js, HTML, CSS, JavaScript</li>
-              <li><strong>Back-End:</strong> Java, Spring Boot, JDBC, MySQL, Tomcat</li>
-              <li><strong>Email:</strong> JavaMailSender for sending invitation emails</li>
-              <li><strong>Database:</strong> MySQL for event and response data storage</li>
-            </ul>
-            The application follows the MVC (Model-View-Controller) architecture, ensuring separation of concerns and maintainability.
-          </p>
-
-          {/* Java MailSender */}
-          <h4 className="mt-4">Email Functionality (Java MailSender)</h4>
-          <p>
-            EventEase uses the <strong>JavaMailSender</strong> interface, part of the Spring Framework's email support. This allows the application to send 
-            personalized invitations via email. Here’s an example of how emails are sent:
-          </p>
-          <pre>
-            <code>
-              {`
-              @Autowired
-              private JavaMailSender mailSender;
-
-              public void sendEmail(String to, String subject, String body) {
-                SimpleMailMessage message = new SimpleMailMessage();
-                message.setTo(to);
-                message.setSubject(subject);
-                message.setText(body);
-                mailSender.send(message);
-              }
-              `}
-            </code>
-          </pre>
-
-          {/* Deployment Details */}
-          <h4 className="mt-4">Deployment Details</h4>
-          <p>
-            The application is hosted on Amazon Web Services (AWS), leveraging the following services:
-            <ul>
-              <li><strong>Amazon RDS (Relational Database Service):</strong> Hosts the MySQL database used for event and response data storage.</li>
-              <li><strong>Amazon EC2 (Elastic Compute Cloud):</strong> Hosts the backend API, providing scalable server resources.</li>
-              <li><strong>Amazon S3 (Simple Storage Service):</strong> Hosts the front-end static assets and serves them to users.</li>
-            </ul>
-            The AWS cloud infrastructure ensures scalability, high availability, and secure access to the application.
-          </p>
-        </div>
-
-        {/* Social Media Analysis and Product Recommendation */}
-        <div className="mb-5">
-          <h3>Social Media Analysis and Product Recommendation</h3>
-          <p>Utilized Amazon EMR with Hadoop and Spark to process Twitter data and identify top trending hashtags. AWS SageMaker was used for sentiment analysis and product quality prediction, while AWS Lambda facilitated real-time REST API communication.</p>
-
-          {/* Code Snippets */}
-          <h4 className="mt-4">Code Snippets</h4>
-          <pre>
-            <code>
-              {`
-                from sagemaker import get_execution_role
-
-                role = get_execution_role()
-                sentiment_model = sagemaker.Model('sentiment-model.tar.gz', role=role)
-
-                predictor = sentiment_model.deploy(initial_instance_count=1, instance_type='ml.m5.large')
-
-                response = predictor.predict('This product is amazing!')
-                print(response)
-              `}
-            </code>
-          </pre>
-        </div>
-
-        {/* Completely Fair Scheduler using Multi-Threading */}
-        <div className="mb-5">
-          <h3>Completely Fair Scheduler using Multi-Threading and Load Balancing</h3>
-          <p>Extended Pintos by improving thread creation and scheduling with a fair scheduler. Developed a dynamic load balancer to distribute threads evenly across CPUs, ensuring efficient processor utilization.</p>
-
-          {/* Code Snippets */}
-          <h4 className="mt-4">Code Snippets</h4>
-          <pre>
-            <code>
-              {`
-                thread_create(thread_func, priority) {
-                  t = allocate_thread();
-                  set_priority(t, priority);
-                  schedule_thread(t);
-                }
-
-                schedule_thread(t) {
-                  add_to_runqueue(t);
-                  balance_threads();
-                }
-              `}
-            </code>
-          </pre>
-        </div>
-
-        {/* Feature Selection for Microarray Gene Data */}
-        <div className="mb-5">
-          <h3>Feature Selection for Microarray Gene Data</h3>
-          <p>Employed Principal Component Analysis (PCA) and Particle Swarm Optimization (PSO) to reduce dimensionality. Achieved an 83.4% classification accuracy using the Extreme Learning Machines classifier.</p>
-
-          {/* Code Snippets */}
-          <h4 className="mt-4">Code Snippets</h4>
-          <pre>
-            <code>
-              {`
-                from sklearn.decomposition import PCA
-
-                pca = PCA(n_components=10)
-                reduced_data = pca.fit_transform(gene_data)
-              `}
-            </code>
-          </pre>
-        </div>
-
-        {/* Smart Classroom */}
-        <div className="mb-5">
-          <h3>Smart Classroom</h3>
-          <p>Designed and implemented a prototype for a 'smart classroom' using Bluetooth beacon tags and IoT devices. Developed a centralized server and Arduino-based control system to optimize energy usage.</p>
-
-          {/* Code Snippets */}
-          <h4 className="mt-4">Code Snippets</h4>
-          <pre>
-            <code>
-              {`
-                void setup() {
-                  Serial.begin(9600);
-                  setupBluetooth();
-                }
-
-                void loop() {
-                  detectBeacons();
-                }
-
-                void detectBeacons() {
-                  if (beaconDetected()) {
-                    logAttendance();
+                  public void sendEmail(String to, String subject, String body) {
+                    SimpleMailMessage message = new SimpleMailMessage();
+                    message.setTo(to);
+                    message.setSubject(subject);
+                    message.setText(body);
+                    mailSender.send(message);
                   }
-                }
-              `}
-            </code>
-          </pre>
-        </div>
-      </section>
+                `}
+              </code>
+            </pre>
 
-      
+            {/* Deployment Details */}
+            <h4 className="mt-4">Deployment Details</h4>
+            <p>
+              The application is hosted on Amazon Web Services (AWS), leveraging the following services:
+              <ul>
+                <li><strong>Amazon RDS (Relational Database Service):</strong> Hosts the MySQL database used for event and response data storage.</li>
+                <li><strong>Amazon EC2 (Elastic Compute Cloud):</strong> Hosts the backend API, providing scalable server resources.</li>
+                <li><strong>Amazon S3 (Simple Storage Service):</strong> Hosts the front-end static assets and serves them to users.</li>
+              </ul>
+              The AWS cloud infrastructure ensures scalability, high availability, and secure access to the application.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Skills Section */}
-      <section id="skills-section" className="container py-5">
-        <h2>Skills</h2>
-        <ul className="list-unstyled">
-          <li><strong>Languages:</strong> Java, C++, C#, ReactJs, TypeScript, JavaScript, Python, Kotlin</li>
-          <li><strong>Technologies:</strong> SpringBoot, MySQL, Git, Django, Android, Junit, AWS, Docker</li>
-          <li><strong>Concepts:</strong> Data Structures, Algorithms, Web App Design, REST API, CI/CD</li>
-        </ul>
-      </section>
+      <div className="horizontal-bar" onClick={() => setShowSkills(!showSkills)}>
+        <h2>Skills {showSkills ? '-' : '+'}</h2>
+      </div>
+      {showSkills && (
+        <section id="skills-section" className="container py-5">
+          <ul className="list-unstyled">
+            <li><strong>Languages:</strong> Java, C++, C#, ReactJs, TypeScript, ES6, JavaScript, HTML, CSS, Python, Kotlin, ASP.NET</li>
+            <li><strong>Technologies:</strong> React, SpringBoot, MySQL, Github/GitLab, Django, Android, JUnit, Automation Testing, Kernel Scripting (Multithreading, Synchronization, Semaphores, Mutex Locks), AWS, S3, EC2, Jenkins, Docker, Kubernetes</li>
+            <li><strong>Concepts:</strong> Data Structures and Algorithms, Web App Design and Development, REST API, DAO Pattern, Mobile Development, CI/CD</li>
+          </ul>
+        </section>
+      )}
 
       {/* Footer */}
       <footer className="bg-dark text-white text-center py-4">
